@@ -1,4 +1,4 @@
-import 'package:assessment/ui/screen/home_screen.dart';
+import 'package:assessment/presentation/ui/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
