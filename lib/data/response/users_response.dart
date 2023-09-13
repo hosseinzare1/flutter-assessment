@@ -8,26 +8,43 @@
 /// company : {"name":"Romaguera-Crona","catchPhrase":"Multi-layered client-server neural-net","bs":"harness real-time e-markets"}
 
 class UsersResponse {
-  UsersResponse({
-      this.id, 
-      this.name, 
-      this.username, 
-      this.email, 
-      this.address, 
-      this.phone, 
-      this.website, 
-      this.company,});
+  UsersResponse({this.users});
 
-  UsersResponse.fromJson(dynamic json) {
+  List<UserResponse>? users;
+
+  factory UsersResponse.fromJson(dynamic json) => UsersResponse(
+        users: json == null
+            ? null
+            : List<UserResponse>.from(
+                json.map((user) => UserResponse.fromJson(user))),
+      );
+}
+
+class UserResponse {
+  UserResponse({
+    this.id,
+    this.name,
+    this.username,
+    this.email,
+    this.address,
+    this.phone,
+    this.website,
+    this.company,
+  });
+
+  UserResponse.fromJson(dynamic json) {
     id = json['id'];
     name = json['name'];
     username = json['username'];
     email = json['email'];
-    address = json['address'] != null ? Address.fromJson(json['address']) : null;
+    address =
+        json['address'] != null ? Address.fromJson(json['address']) : null;
     phone = json['phone'];
     website = json['website'];
-    company = json['company'] != null ? Company.fromJson(json['company']) : null;
+    company =
+        json['company'] != null ? Company.fromJson(json['company']) : null;
   }
+
   num? id;
   String? name;
   String? username;
@@ -53,7 +70,6 @@ class UsersResponse {
     }
     return map;
   }
-
 }
 
 /// name : "Romaguera-Crona"
@@ -62,15 +78,17 @@ class UsersResponse {
 
 class Company {
   Company({
-      this.name, 
-      this.catchPhrase, 
-      this.bs,});
+    this.name,
+    this.catchPhrase,
+    this.bs,
+  });
 
   Company.fromJson(dynamic json) {
     name = json['name'];
     catchPhrase = json['catchPhrase'];
     bs = json['bs'];
   }
+
   String? name;
   String? catchPhrase;
   String? bs;
@@ -82,7 +100,6 @@ class Company {
     map['bs'] = bs;
     return map;
   }
-
 }
 
 /// street : "Kulas Light"
@@ -93,11 +110,12 @@ class Company {
 
 class Address {
   Address({
-      this.street, 
-      this.suite, 
-      this.city, 
-      this.zipcode, 
-      this.geo,});
+    this.street,
+    this.suite,
+    this.city,
+    this.zipcode,
+    this.geo,
+  });
 
   Address.fromJson(dynamic json) {
     street = json['street'];
@@ -106,6 +124,7 @@ class Address {
     zipcode = json['zipcode'];
     geo = json['geo'] != null ? Geo.fromJson(json['geo']) : null;
   }
+
   String? street;
   String? suite;
   String? city;
@@ -123,7 +142,6 @@ class Address {
     }
     return map;
   }
-
 }
 
 /// lat : "-37.3159"
@@ -131,13 +149,15 @@ class Address {
 
 class Geo {
   Geo({
-      this.lat, 
-      this.lng,});
+    this.lat,
+    this.lng,
+  });
 
   Geo.fromJson(dynamic json) {
     lat = json['lat'];
     lng = json['lng'];
   }
+
   String? lat;
   String? lng;
 
@@ -147,5 +167,4 @@ class Geo {
     map['lng'] = lng;
     return map;
   }
-
 }

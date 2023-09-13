@@ -1,3 +1,5 @@
+import 'package:assessment/data/data_source/remote/users_data_source.dart';
+import 'package:assessment/data/repository/users_repository.dart';
 import 'package:assessment/util/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -9,5 +11,7 @@ class DependencyInjection {
     Dio dio = Dio();
     dio.options.baseUrl = apiBaseURL;
     getIt.registerSingleton(dio);
+    getIt.registerSingleton(UsersDataSource());
+    getIt.registerSingleton(UsersRepository());
   }
 }
