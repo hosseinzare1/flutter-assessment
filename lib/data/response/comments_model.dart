@@ -5,28 +5,29 @@
 /// body : "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
 
 class CommentsModel {
-  CommentsModel({required this.posts});
+  CommentsModel({required this.comments});
 
-  List<CommentModel>? posts;
+  List<CommentModel>? comments;
 
   factory CommentsModel.fromJson(dynamic json) => CommentsModel(
-    posts: json == null
-        ? null
-        : List<CommentModel>.from(
-      json.map(
-            (x) => CommentModel.fromJson(x),
-      ),
-    ),
-  );
+        comments: json == null
+            ? null
+            : List<CommentModel>.from(
+                json.mapFromModel(
+                  (x) => CommentModel.fromJson(x),
+                ),
+              ),
+      );
 }
 
 class CommentModel {
   CommentModel({
-      this.postId, 
-      this.id, 
-      this.name, 
-      this.email, 
-      this.body,});
+    this.postId,
+    this.id,
+    this.name,
+    this.email,
+    this.body,
+  });
 
   CommentModel.fromJson(dynamic json) {
     postId = json['postId'];
@@ -35,6 +36,7 @@ class CommentModel {
     email = json['email'];
     body = json['body'];
   }
+
   num? postId;
   num? id;
   String? name;
@@ -50,5 +52,4 @@ class CommentModel {
     map['body'] = body;
     return map;
   }
-
 }

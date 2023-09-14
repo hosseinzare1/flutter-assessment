@@ -10,6 +10,9 @@ class UsersRepository {
 
   Future<List<User>> getUsers() async {
     var response = await _usersDataSource.getUsers();
-    return response.users?.map((user) => UserMapper.map(user)).toList() ?? [];
+    return response.users
+            ?.map((user) => UserMapper.mapFromModel(user))
+            .toList() ??
+        [];
   }
 }
