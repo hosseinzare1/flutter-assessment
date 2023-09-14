@@ -11,7 +11,7 @@ class UsersListWidget extends StatelessWidget {
   });
 
   final List<User> users;
-  final Function(int id) onTap;
+  final Function(int userId) onTap;
 
   @override
   Widget build(BuildContext context) {

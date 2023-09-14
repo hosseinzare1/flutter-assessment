@@ -44,10 +44,10 @@ class HomeBody extends StatelessWidget {
           case UsersStatus.success:
             return UsersListWidget(
               users: state.users ?? [],
-              onTap: (id) {
+              onTap: (userId) {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
-                  return ProfileScreen(userId: id);
+                  return ProfileScreen(userId: userId);
                 }));
               },
             );
