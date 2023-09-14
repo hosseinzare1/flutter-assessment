@@ -7,21 +7,21 @@
 /// website : "hildegard.org"
 /// company : {"name":"Romaguera-Crona","catchPhrase":"Multi-layered client-server neural-net","bs":"harness real-time e-markets"}
 
-class UsersResponse {
-  UsersResponse({this.users});
+class UsersModel {
+  UsersModel({this.users});
 
-  List<UserResponse>? users;
+  List<UserModel>? users;
 
-  factory UsersResponse.fromJson(dynamic json) => UsersResponse(
+  factory UsersModel.fromJson(dynamic json) => UsersModel(
         users: json == null
             ? null
-            : List<UserResponse>.from(
-                json.map((user) => UserResponse.fromJson(user))),
+            : List<UserModel>.from(
+                json.map((user) => UserModel.fromJson(user))),
       );
 }
 
-class UserResponse {
-  UserResponse({
+class UserModel {
+  UserModel({
     this.id,
     this.name,
     this.username,
@@ -32,7 +32,7 @@ class UserResponse {
     this.company,
   });
 
-  UserResponse.fromJson(dynamic json) {
+  UserModel.fromJson(dynamic json) {
     id = json['id'];
     name = json['name'];
     username = json['username'];
