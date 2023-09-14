@@ -17,8 +17,15 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PostsState {
   PostsStatus get postsStatus => throw _privateConstructorUsedError;
+
+  CommentsStatus get commentsStatus => throw _privateConstructorUsedError;
+
   int get userId => throw _privateConstructorUsedError;
+
   List<Post> get posts => throw _privateConstructorUsedError;
+
+  List<Comment> get comments => throw _privateConstructorUsedError;
+
   ErrorEntity? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,11 +38,14 @@ abstract class $PostsStateCopyWith<$Res> {
   factory $PostsStateCopyWith(
           PostsState value, $Res Function(PostsState) then) =
       _$PostsStateCopyWithImpl<$Res, PostsState>;
+
   @useResult
   $Res call(
       {PostsStatus postsStatus,
+      CommentsStatus commentsStatus,
       int userId,
       List<Post> posts,
+      List<Comment> comments,
       ErrorEntity? error});
 
   $ErrorEntityCopyWith<$Res>? get error;
@@ -48,6 +58,7 @@ class _$PostsStateCopyWithImpl<$Res, $Val extends PostsState>
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -55,8 +66,10 @@ class _$PostsStateCopyWithImpl<$Res, $Val extends PostsState>
   @override
   $Res call({
     Object? postsStatus = null,
+    Object? commentsStatus = null,
     Object? userId = null,
     Object? posts = null,
+    Object? comments = null,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -64,6 +77,10 @@ class _$PostsStateCopyWithImpl<$Res, $Val extends PostsState>
           ? _value.postsStatus
           : postsStatus // ignore: cast_nullable_to_non_nullable
               as PostsStatus,
+      commentsStatus: null == commentsStatus
+          ? _value.commentsStatus
+          : commentsStatus // ignore: cast_nullable_to_non_nullable
+              as CommentsStatus,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -72,6 +89,10 @@ class _$PostsStateCopyWithImpl<$Res, $Val extends PostsState>
           ? _value.posts
           : posts // ignore: cast_nullable_to_non_nullable
               as List<Post>,
+      comments: null == comments
+          ? _value.comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<Comment>,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -97,12 +118,15 @@ abstract class _$$_InitialCopyWith<$Res> implements $PostsStateCopyWith<$Res> {
   factory _$$_InitialCopyWith(
           _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
       {PostsStatus postsStatus,
+      CommentsStatus commentsStatus,
       int userId,
       List<Post> posts,
+      List<Comment> comments,
       ErrorEntity? error});
 
   @override
@@ -120,8 +144,10 @@ class __$$_InitialCopyWithImpl<$Res>
   @override
   $Res call({
     Object? postsStatus = null,
+    Object? commentsStatus = null,
     Object? userId = null,
     Object? posts = null,
+    Object? comments = null,
     Object? error = freezed,
   }) {
     return _then(_$_Initial(
@@ -129,6 +155,10 @@ class __$$_InitialCopyWithImpl<$Res>
           ? _value.postsStatus
           : postsStatus // ignore: cast_nullable_to_non_nullable
               as PostsStatus,
+      commentsStatus: null == commentsStatus
+          ? _value.commentsStatus
+          : commentsStatus // ignore: cast_nullable_to_non_nullable
+              as CommentsStatus,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -137,6 +167,10 @@ class __$$_InitialCopyWithImpl<$Res>
           ? _value._posts
           : posts // ignore: cast_nullable_to_non_nullable
               as List<Post>,
+      comments: null == comments
+          ? _value._comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<Comment>,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -150,16 +184,22 @@ class __$$_InitialCopyWithImpl<$Res>
 class _$_Initial implements _Initial {
   const _$_Initial(
       {required this.postsStatus,
+      required this.commentsStatus,
       required this.userId,
       final List<Post> posts = const [],
+      final List<Comment> comments = const [],
       this.error})
-      : _posts = posts;
+      : _posts = posts,
+        _comments = comments;
 
   @override
   final PostsStatus postsStatus;
   @override
+  final CommentsStatus commentsStatus;
+  @override
   final int userId;
   final List<Post> _posts;
+
   @override
   @JsonKey()
   List<Post> get posts {
@@ -168,12 +208,22 @@ class _$_Initial implements _Initial {
     return EqualUnmodifiableListView(_posts);
   }
 
+  final List<Comment> _comments;
+
+  @override
+  @JsonKey()
+  List<Comment> get comments {
+    if (_comments is EqualUnmodifiableListView) return _comments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_comments);
+  }
+
   @override
   final ErrorEntity? error;
 
   @override
   String toString() {
-    return 'PostsState(postsStatus: $postsStatus, userId: $userId, posts: $posts, error: $error)';
+    return 'PostsState(postsStatus: $postsStatus, commentsStatus: $commentsStatus, userId: $userId, posts: $posts, comments: $comments, error: $error)';
   }
 
   @override
@@ -183,14 +233,23 @@ class _$_Initial implements _Initial {
             other is _$_Initial &&
             (identical(other.postsStatus, postsStatus) ||
                 other.postsStatus == postsStatus) &&
+            (identical(other.commentsStatus, commentsStatus) ||
+                other.commentsStatus == commentsStatus) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             const DeepCollectionEquality().equals(other._posts, _posts) &&
+            const DeepCollectionEquality().equals(other._comments, _comments) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, postsStatus, userId,
-      const DeepCollectionEquality().hash(_posts), error);
+  int get hashCode => Object.hash(
+      runtimeType,
+      postsStatus,
+      commentsStatus,
+      userId,
+      const DeepCollectionEquality().hash(_posts),
+      const DeepCollectionEquality().hash(_comments),
+      error);
 
   @JsonKey(ignore: true)
   @override
@@ -202,18 +261,30 @@ class _$_Initial implements _Initial {
 abstract class _Initial implements PostsState {
   const factory _Initial(
       {required final PostsStatus postsStatus,
+      required final CommentsStatus commentsStatus,
       required final int userId,
       final List<Post> posts,
+      final List<Comment> comments,
       final ErrorEntity? error}) = _$_Initial;
 
   @override
   PostsStatus get postsStatus;
+
+  @override
+  CommentsStatus get commentsStatus;
+
   @override
   int get userId;
+
   @override
   List<Post> get posts;
+
+  @override
+  List<Comment> get comments;
+
   @override
   ErrorEntity? get error;
+
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>

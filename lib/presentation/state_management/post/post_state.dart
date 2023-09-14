@@ -10,13 +10,16 @@ enum GetCommentsStatus { initial, loading, success, failure }*/
 
 @freezed
 class PostState with _$PostState {
+  const PostState._();
+
   const factory PostState({
     required PostStatus postStatus,
     required Post post,
-    @Default([]) List<Comment> comments,
 /*    required AddPostStatus addStatus,
     required UpdatePostStatus updateStatus,
     required GetCommentsStatus commentsStatus,*/
     ErrorEntity? error,
+    String? titleError,
+    String? bodyError,
   }) = _Initial;
 }

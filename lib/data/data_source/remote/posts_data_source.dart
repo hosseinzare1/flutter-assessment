@@ -30,7 +30,7 @@ class PostsDataSource {
     var body = postModel.toJson();
     return generateNetworkResponse<PostModel>(
       PostModel.fromJson,
-      () => _dio.put("/posts", data: body),
+      () => _dio.put("/posts/${postModel.id}", data: body),
     );
   }
 

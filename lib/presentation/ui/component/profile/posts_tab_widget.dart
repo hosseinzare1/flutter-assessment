@@ -2,8 +2,11 @@ import 'package:assessment/presentation/state_management/posts/posts_cubit.dart'
 import 'package:assessment/presentation/ui/component/general/failure_widget.dart';
 import 'package:assessment/presentation/ui/component/general/loading_widget.dart';
 import 'package:assessment/presentation/ui/component/profile/post_item_widget.dart';
+import 'package:assessment/presentation/ui/screen/post_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../util/enums.dart';
 
 class PostsTabWidget extends StatelessWidget {
   const PostsTabWidget({super.key});
@@ -19,14 +22,51 @@ class PostsTabWidget extends StatelessWidget {
           case PostsStatus.loading:
             return const LoadingWidget();
           case PostsStatus.success:
-            return ListView.builder(
-              itemBuilder: (context, index) {
-                return PostItem(
-                  post: state.posts[index],
-                  onTap: (int postId) {},
-                );
-              },
-              itemCount: state.posts.length,
+            return Stack(
+              children: [
+                ListView.builder(
+                  padding: const EdgeInsets.only(bottom: 100),
+                  itemBuilder: (context, index) {
+                    return PostItem(
+                      post: state.posts[index],
+                      onItemPressed: (int postId) {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return PostScreen(
+                                post: state.posts[index],
+                                postAction: PostAction.edit,
+                              );
+                            },
+                          ),
+                        );
+                      },
+                      onShowCommentsPressed: (int postId) {},
+                    );
+                  },
+                  itemCount: state.posts.length,
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(32),
+                    child: FloatingActionButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const PostScreen(
+                                postAction: PostAction.add,
+                              );
+                            },
+                          ),
+                        );
+                      },
+                      child: const Icon(Icons.add),
+                    ),
+                  ),
+                )
+              ],
             );
           case PostsStatus.failure:
             return FailureWidget(

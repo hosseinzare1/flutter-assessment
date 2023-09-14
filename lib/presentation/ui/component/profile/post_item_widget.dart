@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 import '../../../../domain/entity/post/post.dart';
 
 class PostItem extends StatelessWidget {
-  const PostItem({super.key, required this.post, required this.onTap});
+  const PostItem({
+    super.key,
+    required this.post,
+    required this.onItemPressed,
+    required this.onShowCommentsPressed,
+  });
 
   final Post post;
-  final Function(int postId) onTap;
+  final Function(int postId) onItemPressed;
+  final Function(int postId) onShowCommentsPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -30,28 +36,37 @@ class PostItem extends StatelessWidget {
           customBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          onTap: () => onTap(post.id),
+          onTap: () => onItemPressed(post.id),
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
               children: [
-                Text(
-                  post.title,
-                  style: textTheme.titleMedium,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      post.title,
+                      style: textTheme.titleMedium,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Text(
+                        post.body,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: textTheme.bodyMedium,
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Text(
-                    post.body,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: textTheme.bodyMedium,
-                  ),
-                ),
+                Expanded(
+                    child: IconButton(
+                  icon: const Icon(Icons.comment_rounded),
+                  onPressed: () {},
+                ))
               ],
             ),
           ),

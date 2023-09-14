@@ -44,6 +44,17 @@ Future<T> generateNetworkResponse<T>(T Function(dynamic data) jsonConverter,
             );
             throw JsonConvertException(e.toString());
           }
+        case 201:
+          try {
+            T result = jsonConverter(serverResponse.data);
+            return result;
+          } catch (e) {
+            Logger().e(
+              "json convert error : ${serverResponse.realUri} \n ${serverResponse.data} ",
+              error: e,
+            );
+            throw JsonConvertException(e.toString());
+          }
         //User will see this errors
         case 400:
           //TODO implement error handling.

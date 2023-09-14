@@ -1,0 +1,1 @@
+enum PostAction { add, edit }
