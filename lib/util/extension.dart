@@ -23,4 +23,21 @@ extension ShowSnackbar on BuildContext {
       ScaffoldMessenger.of(this).showSnackBar(snackBar);
     });
   }
+
+  void showSuccessMessage({required String message, int durationSeconds = 4}) {
+    var textTheme = Theme.of(this).textTheme;
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      var snackBar = SnackBar(
+        content: Text(
+          message,
+          style: textTheme.bodyMedium,
+        ),
+        showCloseIcon: true,
+        duration: Duration(seconds: durationSeconds),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.green,
+      );
+      ScaffoldMessenger.of(this).showSnackBar(snackBar);
+    });
+  }
 }

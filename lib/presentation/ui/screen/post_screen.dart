@@ -50,6 +50,9 @@ class PostBody extends StatelessWidget {
         if (state.postStatus == PostStatus.failure) {
           context.showErrorMessage(errorObject: state.error);
         } else if (state.postStatus == PostStatus.success) {
+          context.showSuccessMessage(
+              message:
+                  "Post ${postAction == PostAction.add ? "added" : "updated"} successfully");
           Navigator.of(context).pop();
         }
       },
