@@ -15,15 +15,14 @@ class UsersListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: users
-          .map(
-            (user) => UserItemWidget(
-              user: user,
-              onTap: onTap,
-            ),
-          )
-          .toList(),
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        return UserItemWidget(
+          user: users[index],
+          onTap: onTap,
+        );
+      },
+      itemCount: users.length,
     );
   }
 }
