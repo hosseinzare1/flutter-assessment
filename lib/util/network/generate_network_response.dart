@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
@@ -20,6 +22,8 @@ Future<T> generateNetworkResponse<T>(T Function(dynamic data) jsonConverter,
         case DioException:
           response = (obj as DioException).response;
           break;
+        case SocketException:
+          throw NoInternetException();
         default:
           throw UndefinedException(obj.toString());
       }
@@ -35,8 +39,9 @@ Future<T> generateNetworkResponse<T>(T Function(dynamic data) jsonConverter,
             return result;
           } catch (e) {
             Logger().e(
-                "json convert error : ${serverResponse.realUri} \n ${serverResponse.data} ",
-                error: e);
+              "json convert error : ${serverResponse.realUri} \n ${serverResponse.data} ",
+              error: e,
+            );
             throw JsonConvertException(e.toString());
           }
         //User will see this errors

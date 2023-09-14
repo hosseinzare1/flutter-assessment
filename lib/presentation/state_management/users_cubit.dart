@@ -14,24 +14,24 @@ part 'users_state.dart';
 class UsersCubit extends Cubit<UsersState> {
   UsersCubit()
       : _usersUseCase = GetIt.I.get<UsersUseCase>(),
-        super(const UsersState(status: UsersStatus.initial));
+        super(const UsersState(usersStatus: UsersStatus.initial));
 
   final UsersUseCase _usersUseCase;
 
-  void getUsers() async {
-    emit(const UsersState(status: UsersStatus.loading));
+  void usersRequested() async {
+    emit(const UsersState(usersStatus: UsersStatus.loading));
     try {
       var response = await _usersUseCase.call(null);
       emit(
         state.copyWith(
-          status: UsersStatus.success,
+          usersStatus: UsersStatus.success,
           users: response,
         ),
       );
     } on Exception catch (exception) {
       emit(
         state.copyWith(
-          status: UsersStatus.failure,
+          usersStatus: UsersStatus.failure,
           error: exceptionToErrorEntity(exception),
         ),
       );

@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UsersState {
-  UsersStatus get status => throw _privateConstructorUsedError;
+  UsersStatus get usersStatus => throw _privateConstructorUsedError;
   List<User>? get users => throw _privateConstructorUsedError;
   ErrorEntity? get error => throw _privateConstructorUsedError;
 
@@ -31,7 +31,7 @@ abstract class $UsersStateCopyWith<$Res> {
           UsersState value, $Res Function(UsersState) then) =
       _$UsersStateCopyWithImpl<$Res, UsersState>;
   @useResult
-  $Res call({UsersStatus status, List<User>? users, ErrorEntity? error});
+  $Res call({UsersStatus usersStatus, List<User>? users, ErrorEntity? error});
 
   $ErrorEntityCopyWith<$Res>? get error;
 }
@@ -49,14 +49,14 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? usersStatus = null,
     Object? users = freezed,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      usersStatus: null == usersStatus
+          ? _value.usersStatus
+          : usersStatus // ignore: cast_nullable_to_non_nullable
               as UsersStatus,
       users: freezed == users
           ? _value.users
@@ -89,7 +89,7 @@ abstract class _$$_InitialCopyWith<$Res> implements $UsersStateCopyWith<$Res> {
       __$$_InitialCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UsersStatus status, List<User>? users, ErrorEntity? error});
+  $Res call({UsersStatus usersStatus, List<User>? users, ErrorEntity? error});
 
   @override
   $ErrorEntityCopyWith<$Res>? get error;
@@ -105,14 +105,14 @@ class __$$_InitialCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? usersStatus = null,
     Object? users = freezed,
     Object? error = freezed,
   }) {
     return _then(_$_Initial(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      usersStatus: null == usersStatus
+          ? _value.usersStatus
+          : usersStatus // ignore: cast_nullable_to_non_nullable
               as UsersStatus,
       users: freezed == users
           ? _value._users
@@ -129,11 +129,12 @@ class __$$_InitialCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial({required this.status, final List<User>? users, this.error})
+  const _$_Initial(
+      {required this.usersStatus, final List<User>? users, this.error})
       : _users = users;
 
   @override
-  final UsersStatus status;
+  final UsersStatus usersStatus;
   final List<User>? _users;
   @override
   List<User>? get users {
@@ -149,7 +150,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'UsersState(status: $status, users: $users, error: $error)';
+    return 'UsersState(usersStatus: $usersStatus, users: $users, error: $error)';
   }
 
   @override
@@ -157,14 +158,15 @@ class _$_Initial implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Initial &&
-            (identical(other.status, status) || other.status == status) &&
+            (identical(other.usersStatus, usersStatus) ||
+                other.usersStatus == usersStatus) &&
             const DeepCollectionEquality().equals(other._users, _users) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, status, const DeepCollectionEquality().hash(_users), error);
+  int get hashCode => Object.hash(runtimeType, usersStatus,
+      const DeepCollectionEquality().hash(_users), error);
 
   @JsonKey(ignore: true)
   @override
@@ -175,12 +177,12 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements UsersState {
   const factory _Initial(
-      {required final UsersStatus status,
+      {required final UsersStatus usersStatus,
       final List<User>? users,
       final ErrorEntity? error}) = _$_Initial;
 
   @override
-  UsersStatus get status;
+  UsersStatus get usersStatus;
   @override
   List<User>? get users;
   @override
