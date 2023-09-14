@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../state_management/albums/albums_cubit.dart';
 import '../general/failure_widget.dart';
 import '../general/loading_widget.dart';
+import 'large_image_dialog.dart';
 
 class AlbumsTabWidget extends StatelessWidget {
   const AlbumsTabWidget({super.key});
@@ -36,6 +37,14 @@ class AlbumsTabWidget extends StatelessWidget {
                         builder: (context) {
                           return PhotosBottomSheet(
                             albumId: state.albums[index].id,
+                            onTap: (photoUrl) {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return LargeImageDialog(photoUrl: photoUrl);
+                                },
+                              );
+                            },
                           );
                         },
                       );

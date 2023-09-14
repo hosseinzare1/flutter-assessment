@@ -7,9 +7,11 @@ import '../general/failure_widget.dart';
 import '../general/loading_widget.dart';
 
 class PhotosBottomSheet extends StatelessWidget {
-  const PhotosBottomSheet({super.key, required this.albumId});
+  const PhotosBottomSheet(
+      {super.key, required this.albumId, required this.onTap});
 
   final int albumId;
+  final Function(String photoUrl) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -25,30 +27,34 @@ class PhotosBottomSheet extends StatelessWidget {
               return const LoadingWidget();
             case PhotosStatus.success:
               return BottomSheet(
-                  clipBehavior: Clip.antiAlias,
-                  onClosing: () {},
-                  builder: (context) {
-                    return GridView.builder(
-                      padding: const EdgeInsets.all(16),
-                      itemCount: state.photos.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              childAspectRatio: 1,
-                              mainAxisSpacing: 8,
-                              crossAxisSpacing: 8),
-                      itemBuilder: (BuildContext context, int index) {
-                        return CachedNetworkImage(
+                clipBehavior: Clip.antiAlias,
+                onClosing: () {},
+                builder: (context) {
+                  return GridView.builder(
+                    padding: const EdgeInsets.all(16),
+                    itemCount: state.photos.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            childAspectRatio: 1,
+                            mainAxisSpacing: 8,
+                            crossAxisSpacing: 8),
+                    itemBuilder: (BuildContext context, int index) {
+                      return InkWell(
+                        onTap: () => onTap(state.photos[index].url),
+                        child: CachedNetworkImage(
                           imageUrl: state.photos[index].thumbnailUrl,
                           progressIndicatorBuilder:
                               (context, url, downloadProgress) =>
                                   const LoadingWidget(),
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.error),
-                        );
-                      },
-                    );
-                  });
+                        ),
+                      );
+                    },
+                  );
+                },
+              );
             case PhotosStatus.failure:
               return FailureWidget(
                 error: state.error,
