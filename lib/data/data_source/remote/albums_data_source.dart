@@ -1,3 +1,4 @@
+import 'package:assessment/data/model/photos_model.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -14,6 +15,14 @@ class AlbumsDataSource {
     return generateNetworkResponse<AlbumsModel>(
       AlbumsModel.fromJson,
       () => _dio.get("/albums", queryParameters: queryParameters),
+    );
+  }
+
+  Future<PhotosModel> getPhotos(int albumId) {
+    var queryParameters = {"albumId": albumId};
+    return generateNetworkResponse(
+      PhotosModel.fromJson,
+      () => _dio.get("/photos", queryParameters: queryParameters),
     );
   }
 }

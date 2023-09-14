@@ -24,7 +24,7 @@ mixin _$Photo {
 
   String get url => throw _privateConstructorUsedError;
 
-  int get thumbnailUrl => throw _privateConstructorUsedError;
+  String get thumbnailUrl => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PhotoCopyWith<Photo> get copyWith => throw _privateConstructorUsedError;
@@ -36,7 +36,8 @@ abstract class $PhotoCopyWith<$Res> {
       _$PhotoCopyWithImpl<$Res, Photo>;
 
   @useResult
-  $Res call({int albumId, int id, String title, String url, int thumbnailUrl});
+  $Res call(
+      {int albumId, int id, String title, String url, String thumbnailUrl});
 }
 
 /// @nodoc
@@ -79,7 +80,7 @@ class _$PhotoCopyWithImpl<$Res, $Val extends Photo>
       thumbnailUrl: null == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ) as $Val);
   }
 }
@@ -91,7 +92,8 @@ abstract class _$$_PhotoCopyWith<$Res> implements $PhotoCopyWith<$Res> {
 
   @override
   @useResult
-  $Res call({int albumId, int id, String title, String url, int thumbnailUrl});
+  $Res call(
+      {int albumId, int id, String title, String url, String thumbnailUrl});
 }
 
 /// @nodoc
@@ -129,7 +131,7 @@ class __$$_PhotoCopyWithImpl<$Res> extends _$PhotoCopyWithImpl<$Res, _$_Photo>
       thumbnailUrl: null == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -153,7 +155,7 @@ class _$_Photo implements _Photo {
   @override
   final String url;
   @override
-  final int thumbnailUrl;
+  final String thumbnailUrl;
 
   @override
   String toString() {
@@ -190,7 +192,7 @@ abstract class _Photo implements Photo {
       required final int id,
       required final String title,
       required final String url,
-      required final int thumbnailUrl}) = _$_Photo;
+      required final String thumbnailUrl}) = _$_Photo;
 
   @override
   int get albumId;
@@ -205,7 +207,7 @@ abstract class _Photo implements Photo {
   String get url;
 
   @override
-  int get thumbnailUrl;
+  String get thumbnailUrl;
 
   @override
   @JsonKey(ignore: true)

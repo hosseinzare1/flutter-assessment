@@ -9,6 +9,6 @@ class Photo with _$Photo {
     required int id,
     required String title,
     required String url,
-    required int thumbnailUrl,
+    required String thumbnailUrl,
   }) = _Photo;
 }
