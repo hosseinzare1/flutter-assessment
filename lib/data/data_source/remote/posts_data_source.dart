@@ -21,7 +21,7 @@ class PostsDataSource {
     var body = postModel.toJson();
     return generateNetworkResponse<PostModel>(
       PostModel.fromJson,
-      () => _dio.post("posts/", data: body),
+      () => _dio.post("/posts", data: body),
     );
   }
 
@@ -29,14 +29,14 @@ class PostsDataSource {
     var body = postModel.toJson();
     return generateNetworkResponse<PostModel>(
       PostModel.fromJson,
-      () => _dio.put("posts/", data: body),
+      () => _dio.put("/posts", data: body),
     );
   }
 
   Future<CommentsModel> getComments(int postID) {
     return generateNetworkResponse<CommentsModel>(
       CommentsModel.fromJson,
-      () => _dio.get("posts/$postID/comments"),
+      () => _dio.get("/posts/$postID/comments"),
     );
   }
 }
