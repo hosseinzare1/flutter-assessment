@@ -1,6 +1,7 @@
 import 'package:assessment/presentation/state_management/users/users_cubit.dart';
 import 'package:assessment/presentation/ui/component/general/loading_widget.dart';
 import 'package:assessment/presentation/ui/component/home/users_list_widget.dart';
+import 'package:assessment/presentation/ui/screen/profile_screen.dart';
 import 'package:assessment/util/dependency_injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,30 +18,13 @@ class HomeScreen extends StatelessWidget {
         DependencyInjection.initUserDependencies();
         return UsersCubit();
       },
-      child: const SafeArea(
+      child: SafeArea(
         child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(56),
-            child: HomeAppbar(),
-          ),
-          body: HomeBody(),
+          appBar: AppBar(title: const Text("Home")),
+          body: const HomeBody(),
         ),
       ),
     );
-  }
-}
-
-class HomeAppbar extends StatelessWidget {
-  const HomeAppbar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    var textTheme = Theme.of(context).textTheme;
-    return Center(
-        child: Text(
-      "Home",
-      style: textTheme.titleLarge,
-    ));
   }
 }
 
@@ -60,7 +44,12 @@ class HomeBody extends StatelessWidget {
           case UsersStatus.success:
             return UsersListWidget(
               users: state.users ?? [],
-              onTap: (id) {},
+              onTap: (id) {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return ProfileScreen(userId: id);
+                }));
+              },
             );
           case UsersStatus.failure:
             return FailureWidget(
