@@ -1,4 +1,5 @@
 import 'package:assessment/presentation/ui/screen/home_screen.dart';
+import 'package:assessment/util/dependency_injection.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DependencyInjection.initDataDependencies();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(

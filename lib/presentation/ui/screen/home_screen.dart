@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) {
-        DependencyInjection.initDataDependencies();
+        DependencyInjection.initUserDependencies();
         return UsersCubit();
       },
       child: const SafeArea(
