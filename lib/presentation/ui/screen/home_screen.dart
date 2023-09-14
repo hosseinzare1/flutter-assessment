@@ -27,9 +27,12 @@ class HomeScreen extends StatelessWidget {
       create: (BuildContext context) {
         return UsersCubit();
       },
-      child: Scaffold(
-        appBar: AppBar(title: const Text("Home")),
-        body: const HomeBody(),
+      child: WillPopScope(
+        onWillPop: () => onWillPop(context),
+        child: Scaffold(
+          appBar: AppBar(title: const Text("Home")),
+          body: const HomeBody(),
+        ),
       ),
     );
   }
@@ -66,5 +69,27 @@ class HomeBody extends StatelessWidget {
         }
       },
     );
+  }
+}
+
+DateTime? currentBackPressTime;
+
+Future<bool> onWillPop(BuildContext context) {
+  DateTime now = DateTime.now();
+  if (currentBackPressTime == null ||
+      now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
+    currentBackPressTime = now;
+    var snackBar = const SnackBar(
+      content: Text(
+        "Press back again to exit",
+      ),
+      duration: Duration(seconds: 2),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: Colors.orange,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    return Future.value(false);
+  } else {
+    return Future.value(true);
   }
 }
