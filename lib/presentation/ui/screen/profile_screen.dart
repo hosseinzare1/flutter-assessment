@@ -1,8 +1,10 @@
+import 'package:assessment/presentation/state_management/albums/albums_cubit.dart';
 import 'package:assessment/presentation/state_management/posts/posts_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../util/dependency_injection.dart';
+import '../component/profile/albums_tab_widget.dart';
 import '../component/profile/posts_tab_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -18,6 +20,12 @@ class ProfileScreen extends StatelessWidget {
           create: (context) {
             DependencyInjection.initPostsDependencies();
             return PostsCubit(userId);
+          },
+        ),
+        BlocProvider(
+          create: (context) {
+            DependencyInjection.initAlbumsDependencies();
+            return AlbumsCubit(userId: userId);
           },
         ),
       ],
@@ -55,7 +63,7 @@ class ProfileBody extends StatelessWidget {
     return const TabBarView(
       children: [
         PostsTabWidget(),
-        Icon(Icons.photo),
+        AlbumsTabWidget(),
       ],
     );
   }
