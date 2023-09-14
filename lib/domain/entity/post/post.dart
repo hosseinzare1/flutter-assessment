@@ -5,9 +5,9 @@ part 'post.freezed.dart';
 @freezed
 class Post with _$Post {
   const factory Post({
-    required int userId,
-    required int id,
-    required String title,
-    required String body,
+    @Default(0) int userId,
+    @Default(0) int id,
+    @Default("") String title,
+    @Default("") String body,
   }) = _Post;
 }

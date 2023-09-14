@@ -17,11 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Post {
   int get userId => throw _privateConstructorUsedError;
-
   int get id => throw _privateConstructorUsedError;
-
   String get title => throw _privateConstructorUsedError;
-
   String get body => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,7 +29,6 @@ mixin _$Post {
 abstract class $PostCopyWith<$Res> {
   factory $PostCopyWith(Post value, $Res Function(Post) then) =
       _$PostCopyWithImpl<$Res, Post>;
-
   @useResult
   $Res call({int userId, int id, String title, String body});
 }
@@ -44,7 +40,6 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -81,7 +76,6 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
 abstract class _$$_PostCopyWith<$Res> implements $PostCopyWith<$Res> {
   factory _$$_PostCopyWith(_$_Post value, $Res Function(_$_Post) then) =
       __$$_PostCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({int userId, int id, String title, String body});
@@ -126,18 +120,19 @@ class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res, _$_Post>
 
 class _$_Post implements _Post {
   const _$_Post(
-      {required this.userId,
-      required this.id,
-      required this.title,
-      required this.body});
+      {this.userId = 0, this.id = 0, this.title = "", this.body = ""});
 
   @override
+  @JsonKey()
   final int userId;
   @override
+  @JsonKey()
   final int id;
   @override
+  @JsonKey()
   final String title;
   @override
+  @JsonKey()
   final String body;
 
   @override
@@ -168,23 +163,19 @@ class _$_Post implements _Post {
 
 abstract class _Post implements Post {
   const factory _Post(
-      {required final int userId,
-      required final int id,
-      required final String title,
-      required final String body}) = _$_Post;
+      {final int userId,
+      final int id,
+      final String title,
+      final String body}) = _$_Post;
 
   @override
   int get userId;
-
   @override
   int get id;
-
   @override
   String get title;
-
   @override
   String get body;
-
   @override
   @JsonKey(ignore: true)
   _$$_PostCopyWith<_$_Post> get copyWith => throw _privateConstructorUsedError;

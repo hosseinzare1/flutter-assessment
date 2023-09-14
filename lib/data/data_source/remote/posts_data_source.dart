@@ -10,10 +10,11 @@ class PostsDataSource {
 
   final Dio _dio;
 
-  Future<PostsModel> getPosts() {
+  Future<PostsModel> getPosts(int postId) {
+    var queryParameters = {"postId": postId};
     return generateNetworkResponse<PostsModel>(
       PostsModel.fromJson,
-      () => _dio.get("/posts"),
+      () => _dio.get("/posts", queryParameters: queryParameters),
     );
   }
 

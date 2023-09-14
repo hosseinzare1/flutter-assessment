@@ -11,8 +11,8 @@ class PostsRepository {
 
   final PostsDataSource _postsDataSource;
 
-  Future<List<Post>> getPosts() async {
-    var response = await _postsDataSource.getPosts();
+  Future<List<Post>> getPosts(int userId) async {
+    var response = await _postsDataSource.getPosts(userId);
     return response.posts
             ?.map((post) => PostMapper.mapFromModel(post))
             .toList() ??
