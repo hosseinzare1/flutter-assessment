@@ -1,4 +1,9 @@
+import 'package:assessment/presentation/state_management/posts/posts_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../util/dependency_injection.dart';
+import '../component/profile/posts_tab_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key, required this.userId});
@@ -7,26 +12,36 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Profile"),
-          centerTitle: true,
-          bottom: const TabBar(
-            tabs: [
-              Tab(
-                text: "Posts",
-                icon: Icon(Icons.content_paste_sharp),
-              ),
-              Tab(
-                text: "Albums",
-                icon: Icon(Icons.photo),
-              )
-            ],
-          ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) {
+            DependencyInjection.initPostsDependencies();
+            return PostsCubit(userId);
+          },
         ),
-        body: const ProfileBody(),
+      ],
+      child: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text("Profile"),
+            centerTitle: true,
+            bottom: const TabBar(
+              tabs: [
+                Tab(
+                  text: "Posts",
+                  icon: Icon(Icons.content_paste_sharp),
+                ),
+                Tab(
+                  text: "Albums",
+                  icon: Icon(Icons.photo),
+                )
+              ],
+            ),
+          ),
+          body: const ProfileBody(),
+        ),
       ),
     );
   }
@@ -39,7 +54,7 @@ class ProfileBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const TabBarView(
       children: [
-        Icon(Icons.content_paste_sharp),
+        PostsTabWidget(),
         Icon(Icons.photo),
       ],
     );
