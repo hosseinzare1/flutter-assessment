@@ -53,7 +53,7 @@ class HomeBody extends StatelessWidget {
             return const LoadingWidget();
           case UsersStatus.success:
             return UsersListWidget(
-              users: state.users ?? [],
+              users: state.users,
               onTap: (userId) {
                 context.push(
                   profileScreenPath,

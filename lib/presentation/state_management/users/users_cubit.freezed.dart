@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UsersState {
   UsersStatus get usersStatus => throw _privateConstructorUsedError;
 
-  List<User>? get users => throw _privateConstructorUsedError;
+  List<User> get users => throw _privateConstructorUsedError;
 
   ErrorEntity? get error => throw _privateConstructorUsedError;
 
@@ -34,7 +34,7 @@ abstract class $UsersStateCopyWith<$Res> {
       _$UsersStateCopyWithImpl<$Res, UsersState>;
 
   @useResult
-  $Res call({UsersStatus usersStatus, List<User>? users, ErrorEntity? error});
+  $Res call({UsersStatus usersStatus, List<User> users, ErrorEntity? error});
 
   $ErrorEntityCopyWith<$Res>? get error;
 }
@@ -54,7 +54,7 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
   @override
   $Res call({
     Object? usersStatus = null,
-    Object? users = freezed,
+    Object? users = null,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -62,10 +62,10 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
           ? _value.usersStatus
           : usersStatus // ignore: cast_nullable_to_non_nullable
               as UsersStatus,
-      users: freezed == users
+      users: null == users
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<User>?,
+              as List<User>,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -94,7 +94,7 @@ abstract class _$$_InitialCopyWith<$Res> implements $UsersStateCopyWith<$Res> {
 
   @override
   @useResult
-  $Res call({UsersStatus usersStatus, List<User>? users, ErrorEntity? error});
+  $Res call({UsersStatus usersStatus, List<User> users, ErrorEntity? error});
 
   @override
   $ErrorEntityCopyWith<$Res>? get error;
@@ -111,7 +111,7 @@ class __$$_InitialCopyWithImpl<$Res>
   @override
   $Res call({
     Object? usersStatus = null,
-    Object? users = freezed,
+    Object? users = null,
     Object? error = freezed,
   }) {
     return _then(_$_Initial(
@@ -119,10 +119,10 @@ class __$$_InitialCopyWithImpl<$Res>
           ? _value.usersStatus
           : usersStatus // ignore: cast_nullable_to_non_nullable
               as UsersStatus,
-      users: freezed == users
+      users: null == users
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<User>?,
+              as List<User>,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -135,20 +135,21 @@ class __$$_InitialCopyWithImpl<$Res>
 
 class _$_Initial implements _Initial {
   const _$_Initial(
-      {required this.usersStatus, final List<User>? users, this.error})
+      {required this.usersStatus,
+      final List<User> users = const [],
+      this.error})
       : _users = users;
 
   @override
   final UsersStatus usersStatus;
-  final List<User>? _users;
+  final List<User> _users;
 
   @override
-  List<User>? get users {
-    final value = _users;
-    if (value == null) return null;
+  @JsonKey()
+  List<User> get users {
     if (_users is EqualUnmodifiableListView) return _users;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_users);
   }
 
   @override
@@ -184,14 +185,14 @@ class _$_Initial implements _Initial {
 abstract class _Initial implements UsersState {
   const factory _Initial(
       {required final UsersStatus usersStatus,
-      final List<User>? users,
+      final List<User> users,
       final ErrorEntity? error}) = _$_Initial;
 
   @override
   UsersStatus get usersStatus;
 
   @override
-  List<User>? get users;
+  List<User> get users;
 
   @override
   ErrorEntity? get error;

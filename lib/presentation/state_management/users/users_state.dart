@@ -6,7 +6,7 @@ enum UsersStatus { initial, loading, success, failure }
 class UsersState with _$UsersState {
   const factory UsersState({
     required UsersStatus usersStatus,
-    List<User>? users,
+    @Default([]) List<User> users,
     ErrorEntity? error,
   }) = _Initial;
 }
