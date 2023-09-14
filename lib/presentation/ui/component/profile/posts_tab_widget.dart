@@ -3,8 +3,10 @@ import 'package:assessment/presentation/ui/component/general/failure_widget.dart
 import 'package:assessment/presentation/ui/component/general/loading_widget.dart';
 import 'package:assessment/presentation/ui/component/profile/post_item_widget.dart';
 import 'package:assessment/presentation/ui/screen/post_screen.dart';
+import 'package:assessment/util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../util/enums.dart';
 import 'comments_bottom_sheet.dart';
@@ -31,14 +33,11 @@ class PostsTabWidget extends StatelessWidget {
                     return PostItem(
                       post: state.posts[index],
                       onItemPressed: (int postId) {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return PostScreen(
-                                post: state.posts[index],
-                                postAction: PostAction.edit,
-                              );
-                            },
+                        context.push(
+                          postScreenPath,
+                          extra: PostScreenExtras(
+                            state.posts[index],
+                            PostAction.add,
                           ),
                         );
                       },
@@ -61,14 +60,9 @@ class PostsTabWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(32),
                     child: FloatingActionButton(
                       onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const PostScreen(
-                                postAction: PostAction.add,
-                              );
-                            },
-                          ),
+                        context.push(
+                          postScreenPath,
+                          extra: PostScreenExtras(null, PostAction.add),
                         );
                       },
                       child: const Icon(Icons.add),

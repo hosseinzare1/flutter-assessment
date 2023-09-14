@@ -7,27 +7,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../domain/entity/post/post.dart';
 import '../component/general/loading_widget.dart';
 
-class PostScreen extends StatelessWidget {
-  const PostScreen({
-    super.key,
-    this.post,
-    required this.postAction,
-  });
+class PostScreenExtras {
+  PostScreenExtras(this.post, this.postAction);
 
   final Post? post;
   final PostAction postAction;
+}
+
+class PostScreen extends StatelessWidget {
+  const PostScreen({super.key, required this.extras});
+
+  final PostScreenExtras extras;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PostCubit(post),
+      create: (context) => PostCubit(extras.post),
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Post"),
           centerTitle: true,
         ),
         body: PostBody(
-          postAction: postAction,
+          postAction: extras.postAction,
         ),
       ),
     );

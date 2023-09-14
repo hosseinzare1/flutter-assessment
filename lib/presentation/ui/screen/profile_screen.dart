@@ -6,10 +6,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../component/profile/albums_tab_widget.dart';
 import '../component/profile/posts_tab_widget.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key, required this.userId});
+class ProfileScreenExtras {
+  ProfileScreenExtras(this.userId);
 
   final int userId;
+}
+
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key, required this.extras});
+
+  final ProfileScreenExtras extras;
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +23,12 @@ class ProfileScreen extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) {
-            return PostsCubit(userId);
+            return PostsCubit(extras.userId);
           },
         ),
         BlocProvider(
           create: (context) {
-            return AlbumsCubit(userId: userId);
+            return AlbumsCubit(userId: extras.userId);
           },
         ),
       ],
