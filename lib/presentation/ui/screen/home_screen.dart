@@ -16,11 +16,9 @@ class HomeScreen extends StatelessWidget {
       create: (BuildContext context) {
         return UsersCubit();
       },
-      child: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(title: const Text("Home")),
-          body: const HomeBody(),
-        ),
+      child: Scaffold(
+        appBar: AppBar(title: const Text("Home")),
+        body: const HomeBody(),
       ),
     );
   }

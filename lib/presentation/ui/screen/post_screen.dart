@@ -21,15 +21,13 @@ class PostScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => PostCubit(post),
-      child: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text("Post"),
-            centerTitle: true,
-          ),
-          body: PostBody(
-            postAction: postAction,
-          ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Post"),
+          centerTitle: true,
+        ),
+        body: PostBody(
+          postAction: postAction,
         ),
       ),
     );
