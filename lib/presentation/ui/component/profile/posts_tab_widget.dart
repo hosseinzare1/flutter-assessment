@@ -37,7 +37,7 @@ class PostsTabWidget extends StatelessWidget {
                           postScreenPath,
                           extra: PostScreenExtras(
                             state.posts[index],
-                            PostAction.add,
+                            PostAction.edit,
                           ),
                         );
                       },
