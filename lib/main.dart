@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  DependencyInjection.initDataDependencies();
+  DependencyInjection.initAllDependencies();
   runApp(const MyApp());
 }
 

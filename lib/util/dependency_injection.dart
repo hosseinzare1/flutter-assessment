@@ -20,6 +20,13 @@ import '../domain/usecase/posts/update_post_usecase.dart';
 final getIt = GetIt.instance;
 
 class DependencyInjection {
+  static void initAllDependencies() {
+    initDataDependencies();
+    initUserDependencies();
+    initPostsDependencies();
+    initAlbumsDependencies();
+  }
+
   static void initDataDependencies() {
     Dio dio = Dio();
     dio.options.baseUrl = apiBaseURL;
@@ -28,23 +35,38 @@ class DependencyInjection {
   }
 
   static void initUserDependencies() {
-    getIt.registerSingleton(UsersDataSource());
-    getIt.registerSingleton(UsersRepository());
-    getIt.registerSingleton(UsersUseCase());
+    //DataSource
+    getIt.registerLazySingleton(() => UsersDataSource());
+
+    //Repository
+    getIt.registerLazySingleton(() => UsersRepository());
+
+    //UseCase
+    getIt.registerLazySingleton(() => UsersUseCase());
   }
 
   static void initPostsDependencies() {
-    getIt.registerSingleton(PostsDataSource());
-    getIt.registerSingleton(PostsRepository());
-    getIt.registerSingleton(GetPostsUseCase());
-    getIt.registerSingleton(AddPostUseCase());
-    getIt.registerSingleton(UpdatePostUseCase());
-    getIt.registerSingleton(GetCommentsUseCase());
+    //DataSource
+    getIt.registerLazySingleton(() => PostsDataSource());
+
+    //Repository
+    getIt.registerLazySingleton(() => PostsRepository());
+
+    //UseCase
+    getIt.registerLazySingleton(() => GetPostsUseCase());
+    getIt.registerLazySingleton(() => AddPostUseCase());
+    getIt.registerLazySingleton(() => UpdatePostUseCase());
+    getIt.registerLazySingleton(() => GetCommentsUseCase());
   }
 
   static void initAlbumsDependencies() {
+    //DataSource
     getIt.registerSingleton(AlbumsDataSource());
+
+    //Repository
     getIt.registerSingleton(AlbumsRepository());
+
+    //UseCase
     getIt.registerSingleton(GetAlbumsUseCase());
     getIt.registerSingleton(GetPhotosUseCase());
   }

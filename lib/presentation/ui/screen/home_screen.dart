@@ -2,7 +2,6 @@ import 'package:assessment/presentation/state_management/users/users_cubit.dart'
 import 'package:assessment/presentation/ui/component/general/loading_widget.dart';
 import 'package:assessment/presentation/ui/component/home/users_list_widget.dart';
 import 'package:assessment/presentation/ui/screen/profile_screen.dart';
-import 'package:assessment/util/dependency_injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +14,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) {
-        DependencyInjection.initUserDependencies();
         return UsersCubit();
       },
       child: SafeArea(
