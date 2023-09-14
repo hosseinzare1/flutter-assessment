@@ -13,7 +13,7 @@ class CommentsModel {
         comments: json == null
             ? null
             : List<CommentModel>.from(
-                json.mapFromModel(
+                json.map(
                   (x) => CommentModel.fromJson(x),
                 ),
               ),

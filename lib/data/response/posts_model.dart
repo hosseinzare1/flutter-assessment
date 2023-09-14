@@ -12,7 +12,7 @@ class PostsModel {
         posts: json == null
             ? null
             : List<PostModel>.from(
-                json.mapFromModel(
+                json.map(
                   (x) => PostModel.fromJson(x),
                 ),
               ),

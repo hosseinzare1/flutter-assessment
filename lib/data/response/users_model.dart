@@ -16,7 +16,7 @@ class UsersModel {
         users: json == null
             ? null
             : List<UserModel>.from(
-                json.mapFromModel((user) => UserModel.fromJson(user))),
+                json.map((user) => UserModel.fromJson(user))),
       );
 }
 
