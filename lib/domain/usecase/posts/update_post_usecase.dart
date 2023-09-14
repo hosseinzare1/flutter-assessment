@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 
 import '../../../data/repository/posts_repository.dart';
-import '../../model/post/post.dart';
+import '../../entity/post/post.dart';
 import '../base_usecase.dart';
 
 class UpdatePostUseCase extends BaseUseCase<Post, Post> {

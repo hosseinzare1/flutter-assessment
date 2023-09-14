@@ -3,14 +3,15 @@ import 'package:assessment/data/data_source/remote/posts_data_source.dart';
 import 'package:assessment/data/data_source/remote/users_data_source.dart';
 import 'package:assessment/data/repository/posts_repository.dart';
 import 'package:assessment/data/repository/users_repository.dart';
-import 'package:assessment/domain/usecase/post/add_post_usecase.dart';
-import 'package:assessment/domain/usecase/post/get_comments_usecase.dart';
-import 'package:assessment/domain/usecase/post/get_posts_usecase.dart';
-import 'package:assessment/domain/usecase/post/update_post_usecase.dart';
-import 'package:assessment/domain/usecase/users_usecase.dart';
+import 'package:assessment/domain/usecase/users/get_users_usecase.dart';
 import 'package:assessment/util/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+
+import '../domain/usecase/posts/add_post_usecase.dart';
+import '../domain/usecase/posts/get_comments_usecase.dart';
+import '../domain/usecase/posts/get_posts_usecase.dart';
+import '../domain/usecase/posts/update_post_usecase.dart';
 
 final getIt = GetIt.instance;
 
@@ -35,6 +36,5 @@ class DependencyInjection {
     getIt.registerSingleton(AddPostUseCase());
     getIt.registerSingleton(UpdatePostUseCase());
     getIt.registerSingleton(GetCommentsUseCase());
-
   }
 }

@@ -1,6 +1,7 @@
-import 'package:assessment/domain/model/error_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+
+import '../../../../domain/entity/error_entity.dart';
 
 class FailureWidget extends StatelessWidget {
   const FailureWidget({

@@ -1,7 +1,7 @@
 import 'package:assessment/presentation/ui/component/home/user_item_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../domain/model/user/user.dart';
+import '../../../../domain/entity/user/user.dart';
 
 class UsersListWidget extends StatelessWidget {
   const UsersListWidget({

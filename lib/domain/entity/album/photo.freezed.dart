@@ -17,9 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Photo {
   int get albumId => throw _privateConstructorUsedError;
+
   int get id => throw _privateConstructorUsedError;
+
   String get title => throw _privateConstructorUsedError;
+
   String get url => throw _privateConstructorUsedError;
+
   int get thumbnailUrl => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,6 +34,7 @@ mixin _$Photo {
 abstract class $PhotoCopyWith<$Res> {
   factory $PhotoCopyWith(Photo value, $Res Function(Photo) then) =
       _$PhotoCopyWithImpl<$Res, Photo>;
+
   @useResult
   $Res call({int albumId, int id, String title, String url, int thumbnailUrl});
 }
@@ -41,6 +46,7 @@ class _$PhotoCopyWithImpl<$Res, $Val extends Photo>
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -82,6 +88,7 @@ class _$PhotoCopyWithImpl<$Res, $Val extends Photo>
 abstract class _$$_PhotoCopyWith<$Res> implements $PhotoCopyWith<$Res> {
   factory _$$_PhotoCopyWith(_$_Photo value, $Res Function(_$_Photo) then) =
       __$$_PhotoCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call({int albumId, int id, String title, String url, int thumbnailUrl});
@@ -187,14 +194,19 @@ abstract class _Photo implements Photo {
 
   @override
   int get albumId;
+
   @override
   int get id;
+
   @override
   String get title;
+
   @override
   String get url;
+
   @override
   int get thumbnailUrl;
+
   @override
   @JsonKey(ignore: true)
   _$$_PhotoCopyWith<_$_Photo> get copyWith =>

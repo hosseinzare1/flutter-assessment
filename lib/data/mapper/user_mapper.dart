@@ -1,5 +1,5 @@
-import 'package:assessment/data/response/users_model.dart';
-import 'package:assessment/domain/model/user/user.dart';
+import '../../domain/entity/user/user.dart';
+import '../model/users_model.dart';
 
 class UserMapper {
   static User mapFromModel(UserModel response) {

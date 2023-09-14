@@ -1,9 +1,9 @@
 import 'package:assessment/data/data_source/remote/posts_data_source.dart';
 import 'package:assessment/data/mapper/post_mapper.dart';
-import 'package:assessment/domain/model/post/comment.dart';
-import 'package:assessment/domain/model/post/post.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../domain/entity/post/comment.dart';
+import '../../domain/entity/post/post.dart';
 import '../mapper/comment_mapper.dart';
 
 class PostsRepository {

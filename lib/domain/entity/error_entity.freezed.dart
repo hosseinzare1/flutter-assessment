@@ -17,8 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ErrorEntity {
   Exception? get exception => throw _privateConstructorUsedError;
+
   String get title => throw _privateConstructorUsedError;
+
   String get description => throw _privateConstructorUsedError;
+
   String get solution => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,6 +34,7 @@ abstract class $ErrorEntityCopyWith<$Res> {
   factory $ErrorEntityCopyWith(
           ErrorEntity value, $Res Function(ErrorEntity) then) =
       _$ErrorEntityCopyWithImpl<$Res, ErrorEntity>;
+
   @useResult
   $Res call(
       {Exception? exception,
@@ -46,6 +50,7 @@ class _$ErrorEntityCopyWithImpl<$Res, $Val extends ErrorEntity>
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -84,6 +89,7 @@ abstract class _$$_ErrorEntityCopyWith<$Res>
   factory _$$_ErrorEntityCopyWith(
           _$_ErrorEntity value, $Res Function(_$_ErrorEntity) then) =
       __$$_ErrorEntityCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
@@ -187,12 +193,16 @@ abstract class _ErrorEntity implements ErrorEntity {
 
   @override
   Exception? get exception;
+
   @override
   String get title;
+
   @override
   String get description;
+
   @override
   String get solution;
+
   @override
   @JsonKey(ignore: true)
   _$$_ErrorEntityCopyWith<_$_ErrorEntity> get copyWith =>

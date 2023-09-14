@@ -1,14 +1,13 @@
-import 'package:assessment/domain/model/error_entity.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../domain/model/user/user.dart';
-import '../../domain/usecase/users_usecase.dart';
-import '../../util/error_handling/exception_to_error_object.dart';
+import '../../../domain/entity/error_entity.dart';
+import '../../../domain/entity/user/user.dart';
+import '../../../domain/usecase/users/get_users_usecase.dart';
+import '../../../util/error_handling/exception_to_error_object.dart';
 
 part 'users_cubit.freezed.dart';
-
 part 'users_state.dart';
 
 class UsersCubit extends Cubit<UsersState> {

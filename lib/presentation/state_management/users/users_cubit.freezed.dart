@@ -17,7 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$UsersState {
   UsersStatus get usersStatus => throw _privateConstructorUsedError;
+
   List<User>? get users => throw _privateConstructorUsedError;
+
   ErrorEntity? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,6 +32,7 @@ abstract class $UsersStateCopyWith<$Res> {
   factory $UsersStateCopyWith(
           UsersState value, $Res Function(UsersState) then) =
       _$UsersStateCopyWithImpl<$Res, UsersState>;
+
   @useResult
   $Res call({UsersStatus usersStatus, List<User>? users, ErrorEntity? error});
 
@@ -43,6 +46,7 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -87,6 +91,7 @@ abstract class _$$_InitialCopyWith<$Res> implements $UsersStateCopyWith<$Res> {
   factory _$$_InitialCopyWith(
           _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call({UsersStatus usersStatus, List<User>? users, ErrorEntity? error});
@@ -136,6 +141,7 @@ class _$_Initial implements _Initial {
   @override
   final UsersStatus usersStatus;
   final List<User>? _users;
+
   @override
   List<User>? get users {
     final value = _users;
@@ -183,10 +189,13 @@ abstract class _Initial implements UsersState {
 
   @override
   UsersStatus get usersStatus;
+
   @override
   List<User>? get users;
+
   @override
   ErrorEntity? get error;
+
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>

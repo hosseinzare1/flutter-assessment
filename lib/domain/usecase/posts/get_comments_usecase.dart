@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 
 import '../../../data/repository/posts_repository.dart';
-import '../../model/post/comment.dart';
+import '../../entity/post/comment.dart';
 import '../base_usecase.dart';
 
 class GetCommentsUseCase extends BaseUseCase<int, List<Comment>> {

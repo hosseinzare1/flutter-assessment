@@ -1,9 +1,9 @@
-import 'package:assessment/data/response/comments_model.dart';
 import 'package:assessment/util/network/generate_network_response.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../response/posts_model.dart';
+import '../../model/comments_model.dart';
+import '../../model/posts_model.dart';
 
 class PostsDataSource {
   PostsDataSource() : _dio = GetIt.I<Dio>();

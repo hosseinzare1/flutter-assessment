@@ -1,5 +1,5 @@
-import 'package:assessment/data/response/comments_model.dart';
-import 'package:assessment/domain/model/post/comment.dart';
+import '../../domain/entity/post/comment.dart';
+import '../model/comments_model.dart';
 
 class CommentMapper {
   static Comment mapFromModel(CommentModel commentModel) {

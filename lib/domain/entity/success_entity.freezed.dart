@@ -28,6 +28,7 @@ abstract class $SuccessEntityCopyWith<$Res> {
   factory $SuccessEntityCopyWith(
           SuccessEntity value, $Res Function(SuccessEntity) then) =
       _$SuccessEntityCopyWithImpl<$Res, SuccessEntity>;
+
   @useResult
   $Res call({bool success});
 }
@@ -39,6 +40,7 @@ class _$SuccessEntityCopyWithImpl<$Res, $Val extends SuccessEntity>
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -62,6 +64,7 @@ abstract class _$$_SuccessEntityCopyWith<$Res>
   factory _$$_SuccessEntityCopyWith(
           _$_SuccessEntity value, $Res Function(_$_SuccessEntity) then) =
       __$$_SuccessEntityCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call({bool success});
@@ -126,6 +129,7 @@ abstract class _SuccessEntity implements SuccessEntity {
 
   @override
   bool get success;
+
   @override
   @JsonKey(ignore: true)
   _$$_SuccessEntityCopyWith<_$_SuccessEntity> get copyWith =>

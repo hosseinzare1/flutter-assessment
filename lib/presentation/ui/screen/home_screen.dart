@@ -1,4 +1,4 @@
-import 'package:assessment/presentation/state_management/users_cubit.dart';
+import 'package:assessment/presentation/state_management/users/users_cubit.dart';
 import 'package:assessment/presentation/ui/component/general/loading_widget.dart';
 import 'package:assessment/presentation/ui/component/home/users_list_widget.dart';
 import 'package:assessment/util/dependency_injection.dart';

@@ -1,5 +1,5 @@
-import 'package:assessment/data/response/posts_model.dart';
-import 'package:assessment/domain/model/post/post.dart';
+import '../../domain/entity/post/post.dart';
+import '../model/posts_model.dart';
 
 class PostMapper {
   static Post mapFromModel(PostModel response) {
