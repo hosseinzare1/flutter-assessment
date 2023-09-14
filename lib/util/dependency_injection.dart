@@ -1,6 +1,8 @@
+import 'package:assessment/data/data_source/remote/albums_data_source.dart';
 import 'package:assessment/data/data_source/remote/interceptor.dart';
 import 'package:assessment/data/data_source/remote/posts_data_source.dart';
 import 'package:assessment/data/data_source/remote/users_data_source.dart';
+import 'package:assessment/data/repository/albums_repository.dart';
 import 'package:assessment/data/repository/posts_repository.dart';
 import 'package:assessment/data/repository/users_repository.dart';
 import 'package:assessment/domain/usecase/users/get_users_usecase.dart';
@@ -36,5 +38,10 @@ class DependencyInjection {
     getIt.registerSingleton(AddPostUseCase());
     getIt.registerSingleton(UpdatePostUseCase());
     getIt.registerSingleton(GetCommentsUseCase());
+  }
+
+  static void initAlbumsDependencies() {
+    getIt.registerSingleton(AlbumsDataSource());
+    getIt.registerSingleton(AlbumsRepository());
   }
 }
