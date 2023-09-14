@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../util/enums.dart';
+import 'comments_bottom_sheet.dart';
 
 class PostsTabWidget extends StatelessWidget {
   const PostsTabWidget({super.key});
@@ -41,7 +42,15 @@ class PostsTabWidget extends StatelessWidget {
                           ),
                         );
                       },
-                      onShowCommentsPressed: (int postId) {},
+                      onShowCommentsPressed: (int postId) {
+                        showModalBottomSheet(
+                          showDragHandle: true,
+                          context: context,
+                          builder: (context) {
+                            return CommentsBottomSheet(postId: postId);
+                          },
+                        );
+                      },
                     );
                   },
                   itemCount: state.posts.length,
@@ -65,7 +74,7 @@ class PostsTabWidget extends StatelessWidget {
                       child: const Icon(Icons.add),
                     ),
                   ),
-                )
+                ),
               ],
             );
           case PostsStatus.failure:

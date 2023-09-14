@@ -17,16 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PostState {
   PostStatus get postStatus => throw _privateConstructorUsedError;
-
-  Post get post => throw _privateConstructorUsedError;
-
-  /*    required AddPostStatus addStatus,
+  Post get post =>
+      throw _privateConstructorUsedError; /*    required AddPostStatus addStatus,
     required UpdatePostStatus updateStatus,
     required GetCommentsStatus commentsStatus,*/
   ErrorEntity? get error => throw _privateConstructorUsedError;
-
   String? get titleError => throw _privateConstructorUsedError;
-
   String? get bodyError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -38,7 +34,6 @@ mixin _$PostState {
 abstract class $PostStateCopyWith<$Res> {
   factory $PostStateCopyWith(PostState value, $Res Function(PostState) then) =
       _$PostStateCopyWithImpl<$Res, PostState>;
-
   @useResult
   $Res call(
       {PostStatus postStatus,
@@ -48,7 +43,6 @@ abstract class $PostStateCopyWith<$Res> {
       String? bodyError});
 
   $PostCopyWith<$Res> get post;
-
   $ErrorEntityCopyWith<$Res>? get error;
 }
 
@@ -59,7 +53,6 @@ class _$PostStateCopyWithImpl<$Res, $Val extends PostState>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -122,7 +115,6 @@ abstract class _$$_InitialCopyWith<$Res> implements $PostStateCopyWith<$Res> {
   factory _$$_InitialCopyWith(
           _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -134,7 +126,6 @@ abstract class _$$_InitialCopyWith<$Res> implements $PostStateCopyWith<$Res> {
 
   @override
   $PostCopyWith<$Res> get post;
-
   @override
   $ErrorEntityCopyWith<$Res>? get error;
 }
@@ -195,7 +186,6 @@ class _$_Initial extends _Initial {
   final PostStatus postStatus;
   @override
   final Post post;
-
 /*    required AddPostStatus addStatus,
     required UpdatePostStatus updateStatus,
     required GetCommentsStatus commentsStatus,*/
@@ -244,26 +234,20 @@ abstract class _Initial extends PostState {
       final ErrorEntity? error,
       final String? titleError,
       final String? bodyError}) = _$_Initial;
-
   const _Initial._() : super._();
 
   @override
   PostStatus get postStatus;
-
   @override
   Post get post;
-
   @override /*    required AddPostStatus addStatus,
     required UpdatePostStatus updateStatus,
     required GetCommentsStatus commentsStatus,*/
   ErrorEntity? get error;
-
   @override
   String? get titleError;
-
   @override
   String? get bodyError;
-
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>
