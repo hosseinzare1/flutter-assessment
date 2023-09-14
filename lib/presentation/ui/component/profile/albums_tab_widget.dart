@@ -1,4 +1,5 @@
 import 'package:assessment/presentation/ui/component/profile/album_item_widget.dart';
+import 'package:assessment/presentation/ui/component/profile/photos_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,11 +23,23 @@ class AlbumsTabWidget extends StatelessWidget {
           case AlbumsStatus.success:
             return GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, childAspectRatio: 1.5),
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.5,
+                ),
                 itemBuilder: (context, index) {
                   return AlbumItemWidget(
                     album: state.albums[index],
-                    onTap: (int albumId) {},
+                    onTap: (int albumId) {
+                      showModalBottomSheet(
+                        context: context,
+                        showDragHandle: true,
+                        builder: (context) {
+                          return PhotosBottomSheet(
+                            albumId: state.albums[index].id,
+                          );
+                        },
+                      );
+                    },
                   );
                 },
                 itemCount: state.albums.length);
