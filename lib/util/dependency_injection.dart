@@ -6,6 +6,7 @@ import 'package:assessment/data/repository/albums_repository.dart';
 import 'package:assessment/data/repository/posts_repository.dart';
 import 'package:assessment/data/repository/users_repository.dart';
 import 'package:assessment/domain/usecase/albums/get_albums_usecase.dart';
+import 'package:assessment/domain/usecase/albums/get_photos_usecase.dart';
 import 'package:assessment/domain/usecase/users/get_users_usecase.dart';
 import 'package:assessment/util/constants.dart';
 import 'package:dio/dio.dart';
@@ -45,5 +46,6 @@ class DependencyInjection {
     getIt.registerSingleton(AlbumsDataSource());
     getIt.registerSingleton(AlbumsRepository());
     getIt.registerSingleton(GetAlbumsUseCase());
+    getIt.registerSingleton(GetPhotosUseCase());
   }
 }
