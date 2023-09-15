@@ -1,4 +1,4 @@
-import 'package:assessment/domain/entity/error_entity.dart';
+import 'package:assessment/domain/entity/general/error_entity.dart';
 import 'package:assessment/domain/usecase/albums/get_albums_usecase.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

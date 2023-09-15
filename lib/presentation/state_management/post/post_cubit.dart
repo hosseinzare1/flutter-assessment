@@ -5,7 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../domain/entity/error_entity.dart';
+import '../../../domain/entity/general/error_entity.dart';
 import '../../../domain/entity/post/post.dart';
 
 part 'post_cubit.freezed.dart';

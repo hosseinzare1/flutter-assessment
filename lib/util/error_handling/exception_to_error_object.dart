@@ -1,4 +1,4 @@
-import '../../domain/entity/error_entity.dart';
+import '../../domain/entity/general/error_entity.dart';
 import 'app_exception.dart';
 
 ErrorEntity exceptionToErrorEntity(Exception exception) {
