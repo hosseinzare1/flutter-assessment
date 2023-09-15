@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../general/loading_widget.dart';
+import '../../general/loading_widget.dart';
 
 class LargeImageDialog extends StatelessWidget {
   const LargeImageDialog({super.key, required this.photoUrl});

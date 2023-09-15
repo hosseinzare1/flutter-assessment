@@ -1,11 +1,11 @@
-import 'package:assessment/presentation/ui/component/profile/album_item_widget.dart';
-import 'package:assessment/presentation/ui/component/profile/photos_bottom_sheet.dart';
+import 'package:assessment/presentation/ui/component/profile/albums_tab/album_item_widget.dart';
+import 'package:assessment/presentation/ui/component/profile/albums_tab/photos_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../state_management/albums/albums_cubit.dart';
-import '../general/failure_widget.dart';
-import '../general/loading_widget.dart';
+import '../../../../state_management/albums/albums_cubit.dart';
+import '../../general/failure_widget.dart';
+import '../../general/loading_widget.dart';
 import 'large_image_dialog.dart';
 
 class AlbumsTabWidget extends StatelessWidget {

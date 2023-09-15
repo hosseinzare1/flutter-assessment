@@ -3,8 +3,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../general/failure_widget.dart';
-import '../general/loading_widget.dart';
+import '../../general/failure_widget.dart';
+import '../../general/loading_widget.dart';
 
 class PhotosBottomSheet extends StatelessWidget {
   const PhotosBottomSheet(

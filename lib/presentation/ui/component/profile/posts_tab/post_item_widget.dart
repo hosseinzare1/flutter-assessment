@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../domain/entity/post/post.dart';
+import '../../../../../domain/entity/post/post.dart';
 
 class PostItem extends StatelessWidget {
   const PostItem({

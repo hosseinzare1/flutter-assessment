@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../domain/entity/album/album.dart';
+import '../../../../../domain/entity/album/album.dart';
 
 class AlbumItemWidget extends StatelessWidget {
   const AlbumItemWidget({super.key, required this.album, required this.onTap});

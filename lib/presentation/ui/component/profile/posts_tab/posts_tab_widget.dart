@@ -1,15 +1,15 @@
 import 'package:assessment/presentation/state_management/posts/posts_cubit.dart';
 import 'package:assessment/presentation/ui/component/general/failure_widget.dart';
 import 'package:assessment/presentation/ui/component/general/loading_widget.dart';
-import 'package:assessment/presentation/ui/component/profile/post_item_widget.dart';
+import 'package:assessment/presentation/ui/component/profile/posts_tab/post_item_widget.dart';
 import 'package:assessment/presentation/ui/screen/post_screen.dart';
 import 'package:assessment/util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../domain/entity/post/post.dart';
-import '../../../../util/enums.dart';
+import '../../../../../domain/entity/post/post.dart';
+import '../../../../../util/enums.dart';
 import 'comments_bottom_sheet.dart';
 
 class PostsTabWidget extends StatelessWidget {

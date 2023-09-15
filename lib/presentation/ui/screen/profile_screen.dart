@@ -3,8 +3,8 @@ import 'package:assessment/presentation/state_management/posts/posts_cubit.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../component/profile/albums_tab_widget.dart';
-import '../component/profile/posts_tab_widget.dart';
+import '../component/profile/albums_tab/albums_tab_widget.dart';
+import '../component/profile/posts_tab/posts_tab_widget.dart';
 
 class ProfileScreenExtras {
   ProfileScreenExtras(this.userId);

@@ -3,7 +3,7 @@ import 'package:assessment/presentation/ui/component/general/failure_widget.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../general/loading_widget.dart';
+import '../../general/loading_widget.dart';
 import 'comment_item_widget.dart';
 
 class CommentsBottomSheet extends StatelessWidget {
