@@ -21,8 +21,12 @@ class FailureWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Lottie.asset("assets/animation/failure.json",
-                width: 200, height: 200, repeat: false),
+            Lottie.asset(
+              "assets/animation/failure.json",
+              width: 200,
+              height: 200,
+              repeat: false,
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 16),
               child: Text(
@@ -33,17 +37,28 @@ class FailureWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 16),
               child: Text(
-                error?.description ?? "Something went wrong",
+                error?.description ?? "Something went wrong.",
                 style: textTheme.bodyMedium,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 32),
+              padding: const EdgeInsets.only(top: 16),
+              child: Text(
+                error?.solution ?? "Please try again in a few minutes.",
+                style: textTheme.bodyMedium,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 32, bottom: 32),
               child: ElevatedButton(
                 onPressed: onRetryPressed,
+                style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 16, horizontal: 48),
+                ),
                 child: const Text("Retry"),
               ),
-            )
+            ),
           ],
         ),
       ),
