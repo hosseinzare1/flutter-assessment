@@ -3,6 +3,7 @@ import 'package:assessment/util/enums.dart';
 import 'package:assessment/util/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../domain/entity/post/post.dart';
 import '../component/general/loading_widget.dart';
@@ -51,9 +52,10 @@ class PostBody extends StatelessWidget {
           context.showErrorMessage(errorObject: state.error);
         } else if (state.postStatus == PostStatus.success) {
           context.showSuccessMessage(
-              message:
-                  "Post ${postAction == PostAction.add ? "added" : "updated"} successfully");
-          Navigator.of(context).pop();
+            message:
+                "Post ${postAction == PostAction.add ? "added" : "updated"} successfully",
+          );
+          context.pop(state.post);
         }
       },
       child: BlocBuilder<PostCubit, PostState>(
@@ -107,7 +109,9 @@ class PostBody extends StatelessWidget {
                           }
                         },
                         child: Text(
-                            postAction == PostAction.add ? "Add" : "Update")),
+                          postAction == PostAction.add ? "Add" : "Update",
+                        ),
+                      ),
               )
             ],
           );

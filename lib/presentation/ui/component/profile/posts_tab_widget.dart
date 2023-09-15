@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../domain/entity/post/post.dart';
 import '../../../../util/enums.dart';
 import 'comments_bottom_sheet.dart';
 
@@ -33,13 +34,18 @@ class PostsTabWidget extends StatelessWidget {
                     return PostItem(
                       post: state.posts[index],
                       onItemPressed: (int postId) {
-                        context.push(
-                          postScreenPath,
-                          extra: PostScreenExtras(
-                            state.posts[index],
-                            PostAction.edit,
-                          ),
-                        );
+                        context
+                            .push(postScreenPath,
+                                extra: PostScreenExtras(
+                                  state.posts[index],
+                                  PostAction.edit,
+                                ))
+                            .then((value) {
+                          if (value != null) {
+                            var post = value as Post;
+                            context.read<PostsCubit>().postUpdated(post);
+                          }
+                        });
                       },
                       onShowCommentsPressed: (int postId) {
                         showModalBottomSheet(
@@ -60,9 +66,19 @@ class PostsTabWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(32),
                     child: FloatingActionButton(
                       onPressed: () {
-                        context.push(
-                          postScreenPath,
-                          extra: PostScreenExtras(null, PostAction.add),
+                        context
+                            .push(postScreenPath,
+                                extra: PostScreenExtras(
+                                  null,
+                                  PostAction.add,
+                                ))
+                            .then(
+                          (value) {
+                            if (value != null) {
+                              var post = value as Post;
+                              context.read<PostsCubit>().postAdded(post);
+                            }
+                          },
                         );
                       },
                       child: const Icon(Icons.add),

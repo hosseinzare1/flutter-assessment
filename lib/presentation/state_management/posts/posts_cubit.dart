@@ -8,6 +8,7 @@ import '../../../domain/entity/post/post.dart';
 import '../../../util/error_handling/exception_to_error_object.dart';
 
 part 'posts_cubit.freezed.dart';
+
 part 'posts_state.dart';
 
 class PostsCubit extends Cubit<PostsState> {
@@ -21,12 +22,31 @@ class PostsCubit extends Cubit<PostsState> {
     emit(state.copyWith(postsStatus: PostsStatus.loading));
     try {
       var response = await _getPostsUseCase.call(state.userId);
-      emit(state.copyWith(postsStatus: PostsStatus.success, posts: response));
+      emit(state.copyWith(
+        postsStatus: PostsStatus.success,
+        posts: response,
+      ));
     } on Exception catch (exception) {
       emit(state.copyWith(
         postsStatus: PostsStatus.failure,
         error: exceptionToErrorEntity(exception),
       ));
     }
+  }
+
+  void postAdded(Post post) {
+    emit(state.copyWith(postsStatus: PostsStatus.loading));
+    emit(state.copyWith(
+      postsStatus: PostsStatus.success,
+      posts: [...state.posts, post],
+    ));
+  }
+
+  void postUpdated(Post post) {
+    emit(state.copyWith(postsStatus: PostsStatus.loading));
+    emit(state.copyWith(
+      postsStatus: PostsStatus.success,
+      posts: state.posts.map((e) => e.id == post.id ? post : e).toList(),
+    ));
   }
 }
