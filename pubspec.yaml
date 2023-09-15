@@ -1,7 +1,7 @@
 name: assessment
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -13,11 +13,10 @@ dependencies:
     sdk: flutter
 
   # Presentation
-  flutter_screenutil: ^5.9.0
+  cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.7
   flutter_bloc: ^8.1.3
   bloc: ^8.1.2
-  intl: ^0.18.1
   lottie: ^2.6.0
   cached_network_image: ^3.2.3
   go_router: ^10.1.2
@@ -28,7 +27,6 @@ dependencies:
 
   # Other
   logger: ^2.0.2
-  get: ^4.6.6
   freezed_annotation: ^2.4.1
   get_it: ^7.6.4
 
@@ -37,7 +35,6 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^2.0.0
-  flutter_launcher_icons: ^0.13.1
   build_runner: ^2.4.6
   freezed: ^2.4.2
 
