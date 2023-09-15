@@ -41,12 +41,15 @@ class AlbumItemWidget extends StatelessWidget {
                   album.id.toString(),
                   style: textTheme.labelLarge,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Text(
-                    album.title,
-                    style: textTheme.titleMedium,
-                    maxLines: 2,
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Text(
+                      album.title,
+                      style: textTheme.titleMedium,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ),
               ],
