@@ -5,58 +5,66 @@ ErrorEntity exceptionToErrorEntity(Exception exception) {
   switch (exception.runtimeType) {
     case BadRequestException:
       return ErrorEntity(
-          title: "خطای درخواست",
-          description: exception.toString(),
-          solution: "لطفا مجددا تلاش کنید.");
+        title: "Bad request",
+        description: exception.toString(),
+        solution: "Please try again.",
+      );
 
     case UnauthorisedException:
       return ErrorEntity(
-          title: "توکن منقضی شده",
-          description: "حضور در برنامه نیاز به تمدید دارد",
-          solution: "لطفا دوباره وارد حساب کاربری خود شوید",
-          exception: exception);
+        title: "Not authorized",
+        description: "Your token has expired.",
+        solution: "Please log in to your account again.",
+        exception: exception,
+      );
 
     case ForbiddenException:
       return ErrorEntity(
-          title: "خطا",
-          description: exception.toString(),
-          solution: "کمی بعد مجددا تلاش کنید.");
+        title: "Forbidden",
+        description: exception.toString(),
+        solution: "Please Try again later.",
+      );
 
     case NotFoundException:
       return ErrorEntity(
-          title: "خطای درخواست",
-          description: exception.toString(),
-          solution: "کمی بعد مجددا تلاش کنید");
+        title: "Not found",
+        description: exception.toString(),
+        solution: "Please Try again later.",
+      );
 
     case InternalServerErrorException:
       return const ErrorEntity(
-          title: "خطای سرور",
-          description: "سیستم با مشکل مواجه شده است.",
-          solution: "لطفا بعد از چند دقیقه دوباره تلاش کنید");
+        title: "Server error",
+        description: "The server has encountered a problem.",
+        solution: "Please try again in a few minutes.",
+      );
 
     case JsonConvertException:
       return ErrorEntity(
-          title: "خطا",
-          description: exception.toString(),
-          solution: "کمی بعد مجددا تلاش کنید. ");
+        title: "Data error",
+        description: exception.toString(),
+        solution: "Please Try again.",
+      );
 
     case UndefinedException:
       return const ErrorEntity(
-          title: "خطا",
-          description: "مشکل نامشخصی به وجود آمده.",
-          solution: "لطفا بعد از چند دقیقه دوباره تلاش کنید");
+        title: "Failure",
+        description: "Something went wrong.",
+        solution: "Please try again in a few minutes.",
+      );
 
     case NoInternetException:
       return const ErrorEntity(
-          title: "خطای اتصال",
-          description: "متاسفانه مشکلی در دریافت اطلاعات پیش آمده",
-          solution:
-              "لطفا اتصال اینترنتی خود را بررسی کنید و دوباره تلاش کنید ");
+        title: "Connection error",
+        description: "There is a problem connecting to the server.",
+        solution: "Please check your internet connection and try again.",
+      );
 
     default:
       return const ErrorEntity(
-          title: "خطا",
-          description: "مشکل نامشخصی به وجود آمده.",
-          solution: "لطفا بعد از چند دقیقه دوباره تلاش کنید");
+        title: "Failure",
+        description: "Something went wrong.",
+        solution: "Please try again in a few minutes.",
+      );
   }
 }
