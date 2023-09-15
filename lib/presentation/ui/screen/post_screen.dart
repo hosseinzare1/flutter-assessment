@@ -59,6 +59,7 @@ class PostBody extends StatelessWidget {
         }
       },
       child: BlocBuilder<PostCubit, PostState>(
+        buildWhen: (pState,nState) => pState.postStatus != nState.postStatus,
         builder: (context, state) {
           return Column(
             children: [
@@ -69,27 +70,43 @@ class PostBody extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      TextFormField(
-                        initialValue: state.post.title,
-                        style: textTheme.titleMedium,
-                        decoration: InputDecoration(
-                            hintText: "Title", errorText: state.titleError),
-                        onChanged: (value) =>
-                            context.read<PostCubit>().titleChanged(value),
+                      BlocBuilder<PostCubit, PostState>(
+                        buildWhen: (pStata, nState) {
+                          return pStata.titleError != nState.titleError ||
+                              pStata.post.title != nState.post.title;
+                        },
+                        builder: (context, state) {
+                          return TextFormField(
+                            initialValue: state.post.title,
+                            style: textTheme.titleMedium,
+                            decoration: InputDecoration(
+                                hintText: "Title", errorText: state.titleError),
+                            onChanged: (value) =>
+                                context.read<PostCubit>().titleChanged(value),
+                          );
+                        },
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 64),
-                        child: TextFormField(
-                          initialValue: state.post.body,
-                          style: textTheme.bodyLarge,
-                          maxLines: 10,
-                          decoration: InputDecoration(
-                              border: const OutlineInputBorder(),
-                              hintText: "body",
-                              errorText: state.bodyError),
-                          onChanged: (value) =>
-                              context.read<PostCubit>().bodyChanged(value),
-                        ),
+                      BlocBuilder<PostCubit, PostState>(
+                        buildWhen: (pState, nState) {
+                          return pState.bodyError != nState.bodyError ||
+                              pState.post.body != nState.post.body;
+                        },
+                        builder: (context, state) {
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 64),
+                            child: TextFormField(
+                              initialValue: state.post.body,
+                              style: textTheme.bodyLarge,
+                              maxLines: 10,
+                              decoration: InputDecoration(
+                                  border: const OutlineInputBorder(),
+                                  hintText: "body",
+                                  errorText: state.bodyError),
+                              onChanged: (value) =>
+                                  context.read<PostCubit>().bodyChanged(value),
+                            ),
+                          );
+                        },
                       )
                     ],
                   ),
