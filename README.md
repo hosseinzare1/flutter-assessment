@@ -1,16 +1,24 @@
-# assessment
+# Assessment
 
-A new Flutter project.
+Flutter Assessment project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Flutter SDK version: 3.13.3
 
-A few resources to get you started if this is your first Flutter project:
+## Features
+Clean architecture
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Packages
+- Cache photos: Cached network image
+- State management: Bloc
+- Navigation: GoRouter
+- Code Generation: Freezed
+- Dependency injection: GetIt
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Architecture Diagram
+
+See the architecture diagram used in the application
+in [this link](https://www.figma.com/file/p9TPhDjxdmhzy6wL4cZRrR/App-architecture?type=whiteboard&node-id=0%3A1&t=aOw9p3urUHJdaja3-1)
+.
