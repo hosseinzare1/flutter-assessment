@@ -26,7 +26,8 @@ class PostScreen extends StatelessWidget {
       create: (context) => PostCubit(extras.post),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Post"),
+          title: Text(
+              "${extras.postAction == PostAction.add ? "Add" : "Update"} Post"),
           centerTitle: true,
         ),
         body: PostBody(
@@ -59,7 +60,7 @@ class PostBody extends StatelessWidget {
         }
       },
       child: BlocBuilder<PostCubit, PostState>(
-        buildWhen: (pState,nState) => pState.postStatus != nState.postStatus,
+        buildWhen: (pState, nState) => pState.postStatus != nState.postStatus,
         builder: (context, state) {
           return Column(
             children: [
@@ -79,8 +80,13 @@ class PostBody extends StatelessWidget {
                           return TextFormField(
                             initialValue: state.post.title,
                             style: textTheme.titleMedium,
+                            maxLines: 2,
                             decoration: InputDecoration(
-                                hintText: "Title", errorText: state.titleError),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.always,
+                              labelText: "Title",
+                              errorText: state.titleError,
+                            ),
                             onChanged: (value) =>
                                 context.read<PostCubit>().titleChanged(value),
                           );
@@ -100,7 +106,9 @@ class PostBody extends StatelessWidget {
                               maxLines: 10,
                               decoration: InputDecoration(
                                   border: const OutlineInputBorder(),
-                                  hintText: "body",
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.always,
+                                  labelText: "body",
                                   errorText: state.bodyError),
                               onChanged: (value) =>
                                   context.read<PostCubit>().bodyChanged(value),
@@ -115,6 +123,7 @@ class PostBody extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(16),
                 width: double.infinity,
+                height: 80,
                 child: state.postStatus == PostStatus.loading
                     ? const LoadingWidget()
                     : ElevatedButton(
