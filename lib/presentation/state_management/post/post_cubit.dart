@@ -25,13 +25,6 @@ class PostCubit extends Cubit<PostState> {
 
   void updatePostRequested() async {
     if (!isInputsValid()) {
-      emit(state.copyWith(
-          postStatus: PostStatus.failure,
-          error: const ErrorEntity(
-            title: "Invalid input",
-            description: "Please check your input",
-            solution: "Try again",
-          )));
       return;
     }
     emit(state.copyWith(postStatus: PostStatus.loading));
@@ -50,13 +43,6 @@ class PostCubit extends Cubit<PostState> {
 
   void addPostRequested() async {
     if (!isInputsValid()) {
-      emit(state.copyWith(
-          postStatus: PostStatus.failure,
-          error: const ErrorEntity(
-            title: "Invalid input",
-            description: "Please check your input",
-            solution: "Try again",
-          )));
       return;
     }
     emit(state.copyWith(postStatus: PostStatus.loading));
@@ -90,6 +76,17 @@ class PostCubit extends Cubit<PostState> {
   }
 
   bool isInputsValid() {
-    return (state.post.title.length >= 3 && state.post.body.length >= 6);
+    if (state.post.title.length >= 3 && state.post.body.length >= 6) {
+      return true;
+    } else {
+      emit(state.copyWith(
+          postStatus: PostStatus.failure,
+          error: const ErrorEntity(
+            title: "Invalid input",
+            description: "Please check your input",
+            solution: "Try again",
+          )));
+      return false;
+    }
   }
 }
