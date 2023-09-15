@@ -15,11 +15,6 @@ class BadRequestException extends AppException {
   BadRequestException([message]) : super(message, "");
 }
 
-//401
-class UnauthorisedException extends AppException {
-  UnauthorisedException([message]) : super(message, "");
-}
-
 //403
 class ForbiddenException extends AppException {
   ForbiddenException([message]) : super(message, "");

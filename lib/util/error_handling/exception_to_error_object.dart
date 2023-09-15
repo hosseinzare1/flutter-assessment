@@ -10,14 +10,6 @@ ErrorEntity exceptionToErrorEntity(Exception exception) {
         solution: "Please try again.",
       );
 
-    case UnauthorisedException:
-      return ErrorEntity(
-        title: "Not authorized",
-        description: "Your token has expired.",
-        solution: "Please log in to your account again.",
-        exception: exception,
-      );
-
     case ForbiddenException:
       return ErrorEntity(
         title: "Forbidden",

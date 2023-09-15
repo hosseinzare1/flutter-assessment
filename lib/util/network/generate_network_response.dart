@@ -14,10 +14,10 @@ Future<T> generateNetworkResponse<T>(T Function(dynamic data) jsonConverter,
   if (await Connectivity().checkConnectivity() == ConnectivityResult.none) {
     throw NoInternetException();
   } else {
+    ///call api
     await request().then((value) {
       response = value;
     }, onError: (obj, stackTree) {
-      Logger().e(obj);
       switch (obj.runtimeType) {
         case DioException:
           response = (obj as DioException).response;
@@ -60,8 +60,6 @@ Future<T> generateNetworkResponse<T>(T Function(dynamic data) jsonConverter,
           //TODO implement error handling.
           String errors = "";
           throw BadRequestException(errors);
-        case 401:
-          throw UnauthorisedException();
         case 403:
           throw ForbiddenException();
         case 404:
