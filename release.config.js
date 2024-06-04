@@ -6,8 +6,9 @@ const config = {
     [
      "semantic-release-pub",
      {
+      "publishPub": false,
       "cli": "flutter",
-      "updateBuildNumber" : true
+      "updateBuildNumber": true
      }
     ],
     ["@semantic-release/git", {
