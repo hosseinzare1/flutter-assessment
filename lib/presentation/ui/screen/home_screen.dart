@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
       child: WillPopScope(
         onWillPop: () => onWillPop(context),
         child: Scaffold(
-          appBar: AppBar(title: const Text("Home")),
+          appBar: AppBar(title: const Text("Home page")),
           body: const HomeBody(),
         ),
       ),
