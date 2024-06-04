@@ -16,12 +16,7 @@ const config = {
       "assets": ["dist/*.js", "dist/*.js.map"],
       "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
     }],
-    '@semantic-release/github',
-    ["semantic-release-github-pullrequest", {
-            "assets": ["CHANGELOG.md","pubspec.yaml"],
-            "baseRef": "master"
-     }
-    ]
+    '@semantic-release/github'
   ]
 };
 
