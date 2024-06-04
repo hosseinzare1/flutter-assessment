@@ -22,7 +22,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Update pubspec.yaml
-        if: steps.semantic_release.outputs.nextRelease.version != ''
         run: |
           version=$(npx -c 'echo "$npm_package_version"')
           echo "Updating pubspec.yaml with version $version"
@@ -30,7 +29,6 @@ jobs:
           echo "Updated pubspec.yaml content:"
           cat pubspec.yaml
       - name: Commit updated pubspec.yaml
-        if: steps.semantic_release.outputs.nextRelease.version != ''
         run: |
           echo "Committing updated pubspec.yaml"
           git config --global user.name "github-actions[bot]"
