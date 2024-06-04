@@ -21,27 +21,4 @@ jobs:
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Read version
-        id: read_version
-        run: |
-          version=$(grep -oP '(?<=\[Semantic release\] Created release ).*' version.txt)
-          echo "RELEASE_VERSION=$version" >> $GITHUB_ENV
-          echo "Semantic-release version: $version"
-      - name: Update pubspec.yaml
-        if: env.RELEASE_VERSION != ''
-        run: |
-          version=${{ env.RELEASE_VERSION }}
-          echo "Updating pubspec.yaml with version $version"
-          sed -i "s/version: .*/version: $version/" pubspec.yaml
-          echo "Updated pubspec.yaml content:"
-          cat pubspec.yaml
-      - name: Commit updated pubspec.yaml
-        if: env.RELEASE_VERSION != ''
-        run: |
-          echo "Committing updated pubspec.yaml"
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add pubspec.yaml
-          git commit -m "chore: update pubspec.yaml to version $version"
-          git push origin master
-          echo "Committed and pushed updated pubspec.yaml"
+
