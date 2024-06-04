@@ -16,17 +16,18 @@ jobs:
         with:
           node-version: "lts/*"
       - run: npm ci
-      - run: npx semantic-release
+      - name: Run semantic-release
+        id: semantic_release
+        run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Update pubspec.yaml
-        if: steps.release.outputs.new_release_published == 'true'
+        if: steps.semantic_release.outputs.nextRelease.version != ''
         run: |
-          version=$(node -p "require('./package.json').version")
-          sed -i '' "s/version: .*/version: $version/" pubspec.yaml
-
+          version=$(npx -c 'echo "$npm_package_version"')
+          sed -i "s/version: .*/version: $version/" pubspec.yaml
       - name: Commit updated pubspec.yaml
-        if: steps.release.outputs.new_release_published == 'true'
+        if: steps.semantic_release.outputs.nextRelease.version != ''
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
