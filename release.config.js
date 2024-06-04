@@ -16,7 +16,13 @@ const config = {
       "assets": ["dist/*.js", "dist/*.js.map"],
       "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
     }],
-    '@semantic-release/github'
+    '@semantic-release/github',
+    [
+          '@semantic-release/exec',
+          {
+            verifyReleaseCmd: 'echo ${nextRelease.version} > release_version.txt'
+          }
+    ]
   ]
 };
 

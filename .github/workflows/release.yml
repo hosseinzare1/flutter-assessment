@@ -21,17 +21,25 @@ jobs:
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Read version
+        id: read_version
+        run: |
+          version=$(cat release_version.txt)
+          echo "RELEASE_VERSION=$version" >> $GITHUB_ENV
+          echo "Semantic-release version: $version"
       - name: Commit updated pubspec.yaml
         run: |
+          version=${{ env.RELEASE_VERSION }}
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add pubspec.yaml
-          git commit -m "chore: update pubspec.yaml to new version"
+          git commit -m "chore: update pubspec.yaml to version $version"
           git push origin master
       - name: Commit updated CHANGELOG.md
         run: |
+          version=${{ env.RELEASE_VERSION }}
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add CHANGELOG.md
-          git commit -m "chore: update CHANGELOG.md"
+          git commit -m "chore: update CHANGELOG.md to version $version"
           git push origin master
