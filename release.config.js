@@ -20,7 +20,7 @@ const config = {
       [
           "semantic-release-github-pullrequest", {
             "assets": ["CHANGELOG.md","pubspec.yaml"],
-            "baseRef": "main"
+            "baseRef": "master"
           }
         ]
   ]
