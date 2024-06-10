@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Assessment',
       routerConfig: routerConfig,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
     );
