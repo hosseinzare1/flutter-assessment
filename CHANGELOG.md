@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/hosseinzare1/flutter-assessment/compare/v1.11.1...v1.11.2) (2024-07-06)
+
+
+### Bug Fixes
+
+* update release.yml ([b045aca](https://github.com/hosseinzare1/flutter-assessment/commit/b045aca02a116cabca0fe31fe0020c6a09e0399c))
+
 ## [1.11.1](https://github.com/hosseinzare1/flutter-assessment/compare/v1.11.0...v1.11.1) (2024-06-10)
 
 
