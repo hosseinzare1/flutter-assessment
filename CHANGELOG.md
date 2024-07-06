@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/hosseinzare1/flutter-assessment/compare/v1.11.0...v1.11.1) (2024-06-10)
+
+
+### Bug Fixes
+
+* change color ([b32ec2f](https://github.com/hosseinzare1/flutter-assessment/commit/b32ec2f80b795a1abf9648d2fe17eddcb06c6997))
+
 # [1.11.0](https://github.com/hosseinzare1/flutter-assessment/compare/v1.10.0...v1.11.0) (2024-06-04)
 
 
