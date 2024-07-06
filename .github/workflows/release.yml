@@ -30,16 +30,16 @@ jobs:
       - name: Commit updated pubspec.yaml
         run: |
           version=${{ env.RELEASE_VERSION }}
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           git add pubspec.yaml
           git commit -m "chore: update pubspec.yaml to version $version"
           git push origin master
       - name: Commit updated CHANGELOG.md
         run: |
           version=${{ env.RELEASE_VERSION }}
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           git add CHANGELOG.md
           git commit -m "chore: update CHANGELOG.md to version $version"
           git push origin master
