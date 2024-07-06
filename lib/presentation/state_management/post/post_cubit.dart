@@ -1,3 +1,5 @@
+import 'package:assessment/domain/entity/general/error_entity.dart';
+import 'package:assessment/domain/entity/post/post.dart';
 import 'package:assessment/domain/usecase/posts/add_post_usecase.dart';
 import 'package:assessment/domain/usecase/posts/update_post_usecase.dart';
 import 'package:assessment/util/error_handling/exception_to_error_object.dart';
@@ -5,8 +7,6 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../domain/entity/general/error_entity.dart';
-import '../../../domain/entity/post/post.dart';
 
 part 'post_cubit.freezed.dart';
 
